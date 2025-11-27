@@ -1,152 +1,113 @@
-body, html {
-margin: 0;
-padding: 0;
-height: 100%;
-background: #e2cdb4;
-overflow: hidden;
+html, body {
+  height: 100%;
 }
 
-.container {
-position: fixed;
-inset: 0;
-background: #e2cdb4;
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Horizontal black moving lines */
-.h-lines {
-position: absolute;
-inset: 0;
-pointer-events: none;
-z-index: 2;
+.bg-color {
+  background-color: #b0ac94 !important;
 }
 
-.hline {
-position: absolute;
-left: -100%;
-width: 100%;
-height: 1px;
-background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(0,0,0,0.8) 15%, 
-    rgba(0,0,0,0.95) 50%, 
-    rgba(0,0,0,0.8) 85%, 
-    transparent 100%
-);
-box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
-animation: moveH linear infinite;
+
+.header-color {
+  background-color: #49483d !important; 
 }
 
-.hline:nth-child(1) { top: 15%; animation-duration: 14s; }
-.hline:nth-child(2) { top: 35%; animation-duration: 18s; animation-delay: -6s; }
-.hline:nth-child(3) { top: 55%; animation-duration: 22s; animation-delay: -12s; }
-.hline:nth-child(4) { top: 75%; animation-duration: 16s; animation-delay: -9s; }
 
-@keyframes moveH {
-0%   { transform: translateX(0); }
-100% { transform: translateX(200%); }
+@font-face {
+  font-family: "mulan";
+  src: url('../fonts/Mulan.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-/* Scanlines + glitchy horizontal noise */
-.scanlines {
-position: absolute;
-inset: 0;
-background: repeating-linear-gradient(
-    0deg,
-    rgba(0,0,0,0.05),
-    rgba(0,0,0,0.05) 1px,
-    transparent 1px,
-    transparent 2px
-);
-background-size: 100% 3px;
-animation: scan 7s linear infinite;
-pointer-events: none;
-z-index: 3;
+
+.mulan {
+  font-family: "mulan";
 }
 
-@keyframes scan {
-0%   { transform: translateY(0); }
-100% { transform: translateY(3px); }
+
+
+
+.glitch {
+  position: relative;
+  font-size: 4rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
 }
 
-/* Glitch effect (occasional horizontal tears) */
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .glitch::before {
-content: '';
-position: absolute;
-inset: 0;
-background: 
-    linear-gradient(90deg, transparent 48%, rgba(255,0,255,0.06) 50%, transparent 52%),
-    linear-gradient(90deg, transparent 48%, rgba(0,255,255,0.06) 50%, transparent 52%);
-background-size: 100% 100%;
-animation: glitchLines 3.5s infinite steps(10);
-pointer-events: none;
-opacity: 0.7;
-mix-blend-mode: overlay;
+  animation: glitch-1 0.8s infinite linear alternate-reverse;
+  left: 2px;
+  text-shadow: -2px 0 #ff00c1;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
 }
 
-@keyframes glitchLines {
-0%, 100% { transform: translate(0, 0); }
-10% { transform: translate(-5px, -2px); }
-20% { transform: translate(8px, 3px); }
-30% { transform: translate(-6px, -1px); }
-40% { transform: translate(4px, 2px); }
-60% { transform: translate(-7px, 1px); }
-80% { transform: translate(5px, -3px); }
-}
-
-/* Subtle CRT flicker */
-.container {
-animation: flicker 9s infinite;
-}
-
-@keyframes flicker {
-0%, 100% { opacity: 1; }
-45% { opacity: 1; }
-46% { opacity: 0.97; }
-47% { opacity: 1; }
+.glitch::after {
+  animation: glitch-2 0.6s infinite linear alternate-reverse;
+  left: -2px;
+  text-shadow: 2px 0 #00fff9;
+  clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
 }
 
 
 
 
-.d-lines {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 2;
-  overflow: hidden;
+@keyframes glitch-1 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-3px, 3px); }
+  40% { transform: translate(-3px, -3px); }
+  60% { transform: translate(3px, 3px); }
+  80% { transform: translate(3px, -3px); }
 }
 
-.dline {
-  position: absolute;
-  width: 150vmax;                    /* super long diagonal line */
-  height: 1px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(0,0,0,0.8) 15%,
-    rgba(0,0,0,0.95) 50%,
-    rgba(0,0,0,0.8) 85%,
-    transparent 100%
-  );
-  box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
-  transform: rotate(-45deg);        /* makes the \ direction */
-  animation: moveDiagonal linear infinite;
+@keyframes glitch-2 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(3px, -3px); }
+  40% { transform: translate(-3px, 3px); }
+  60% { transform: translate(3px, -3px); }
+  80% { transform: translate(-3px, 3px); }
 }
 
-/* Only two lines */
-.dline:nth-child(1) {
-  top: -50vmax;
-  left: -50vmax;
-  animation-duration: 18s;
+@keyframes text-flicker {
+  0%, 19.9%, 22%, 62.9%, 64%, 64.9%, 70%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 10px #fff;
+  }
+  20%, 21.9%, 63%, 63.9%, 65%, 69.9% {
+    opacity: 0.7;
+    text-shadow: none;
+  }
 }
 
-.dline:nth-child(2) {
-  top: -70vmax;
-  left: -30vmax;
-  animation-duration: 24s;
-  animation-delay: -9s;
+@keyframes interference-burst {
+  0%, 70%, 100% { opacity: 0; }
+  71% { opacity: 1; }
+  73% { opacity: 0.6; }
+  75% { opacity: 1; }
+  77% { opacity: 0; }
 }
 
-@keyframes moveDiagonal {
-  0%   { transform: translate(0, 0) rotate(-45deg); }
-  100% { transform: translate(100vw, 100vh) rotate(-45deg); }
+@keyframes scanlines {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+@keyframes chars {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
 }
