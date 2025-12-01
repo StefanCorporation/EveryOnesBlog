@@ -1,0 +1,41 @@
+<%- include('../partials/headerForLogin.ejs') %>
+
+
+
+<div class="container text-center mt-5">
+    <h1 class="mulan glitchText">Login</h1>
+</div>
+
+
+
+<div class="container">
+<div class="container mt-3 centered">
+    <div class="row">
+        <form class="row g-3">
+          <div class="col-12 mt-5">
+            <label for="inputUsername" class="form-label mulan glitchText formFontSize">Username *</label>
+            <input type="text" class="form-control" id="inputUsername" placeholder="Enter username" requred>
+          </div>
+          <div class="col-12 mt-5">
+            <label for="inputEmail" class="form-label mulan glitchText formFontSize">Email *</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="user@gmail.com" requred>
+          </div>
+          <div class="col-12 mt-5">
+            <label for="inputPassword1" class="form-label mulan glitchText formFontSize">Password... *</label>
+            <input type="password" class="form-control" id="inputPassword1" placeholder="Enter password" required>
+          </div>
+
+          <div class="col-12 text-center mt-5">
+            <button type="submit" class="btn btn-primary">Sign in</button>
+          </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+</div>
+
+
+<%- include('../partials/footerForLogin.ejs') %>

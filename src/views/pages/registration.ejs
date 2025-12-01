@@ -1,0 +1,49 @@
+<%- include('../partials/headerForLogin.ejs') %>
+
+
+<div class="container text-center mt-5">
+    <h1 class="mulan glitchText">Registration</h1>
+</div>
+
+
+
+<div class="container mt-3 centered">
+    <div class="row">
+        <form class="row g-3">
+          <div class="col-md-6">
+            <label for="inputFirstName" class="form-label mulan glitchText formFontSize">First Name *</label>
+            <input type="text" class="form-control" id="inputFirstName"  placeholder="Enter first name" required>
+          </div>
+          <div class="col-md-6">
+            <label for="inputLastName" class="form-label mulan glitchText formFontSize">Last Name *</label>
+            <input type="text" class="form-control"  placeholder="Enter last name" id="inputLastName" required>
+          </div>
+          <div class="col-12 mt-5">
+            <label for="inputUsername" class="form-label mulan glitchText formFontSize">Username *</label>
+            <input type="text" class="form-control" id="inputUsername" placeholder="Enter username" requred>
+          </div>
+          <div class="col-12 mt-5">
+            <label for="inputEmail" class="form-label mulan glitchText formFontSize">Email *</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="user@gmail.com" requred>
+          </div>
+          <div class="col-12 mt-5">
+            <label for="inputPassword1" class="form-label mulan glitchText formFontSize">Create the password... *</label>
+            <input type="password" class="form-control" id="inputPassword1" placeholder="Create password" required>
+          </div>
+          <div class="col-12 mt-5">
+            <label for="inputPassword2" class="form-label mulan glitchText formFontSize">Submit password... *</label>
+            <input type="password" class="form-control" id="inputPassword2" placeholder="Submit password" required>
+          </div>
+
+
+
+          <div class="col-12 text-center mt-5">
+            <button type="submit" class="btn btn-primary">Sign in</button>
+          </div>
+        </form>
+    </div>
+</div>
+
+
+
+<%- include('../partials/footerForLogin.ejs') %>

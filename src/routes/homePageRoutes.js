@@ -5,7 +5,6 @@ import { getHomePage } from "../controllers/homePage.js";
 
 const router = express.Router();
 
-
 router.get('/', getHomePage);
 
 

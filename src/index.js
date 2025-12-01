@@ -2,8 +2,9 @@ import bodyParser from 'body-parser';
 import express from 'express';
 import morgan from 'morgan';
 
-import homePageRouters from './routes/homePageRoutes.js'
-
+import homePageRouters from './routes/homePageRoutes.js';
+import registrationPageRoutes from './routes/registrationPageRoutes.js';
+import loginPageRoutes from './routes/loginPageRoutes.js';
 
 
 const app = express();
@@ -17,6 +18,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 //Routes
 app.use('/EveryOnesBlog', homePageRouters);
+app.use('/EveryOnesBlog', registrationPageRoutes);
+app.use('/EveryOnesBlog', loginPageRoutes);
 
 
 app.listen(port, () => {

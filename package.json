@@ -1,0 +1,27 @@
+{
+  "name": "everyonesblog",
+  "version": "1.0.0",
+  "description": "Small social network",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StefanCorporation/EveryOnesBlog-old-.git"
+  },
+  "author": "STefan Ashugyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StefanCorporation/EveryOnesBlog-old-/issues"
+  },
+  "homepage": "https://github.com/StefanCorporation/EveryOnesBlog-old-#readme",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "morgan": "^1.10.1",
+    "multer": "^2.0.2"
+  }
+}
