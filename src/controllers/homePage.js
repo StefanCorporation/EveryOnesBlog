@@ -1,3 +1,3 @@
 export const getHomePage = (req, res) => {
-    res.render('pages/index.ejs')
+    res.render('pages/index.ejs', {'title': 'EveryOnesBlog',})
 }

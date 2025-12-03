@@ -1,0 +1,126 @@
+.upload-wrap{
+    width:360px;
+    max-width:50vw;
+    text-align:center;
+    user-select:none;
+  }
+
+  /* main button */
+.nier-upload {
+position:relative;
+display:inline-block;
+padding:5px 26px;
+border-radius:12px;
+background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+box-shadow: 0 6px 18px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+border:1px solid rgba(255,255,255,0.04);
+cursor:pointer;
+overflow:visible;
+transform-origin:center;
+}
+
+.nier-upload .label {
+display:flex;
+align-items:center;
+gap:14px;
+justify-content:center;
+font-size:1.05rem;
+letter-spacing:0.08em;
+text-transform:uppercase;
+font-weight:600;
+}
+
+/* icon (camera/upload glyph) */
+.icon {
+width:36px;
+height:36px;
+display:inline-grid;
+place-items:center;
+background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+border-radius:8px;
+border:1px solid rgba(255,255,255,0.04);
+box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+/* scanlines overlay */
+.nier-upload::after{
+content:"";
+pointer-events:none;
+position:absolute;
+inset:0;
+border-radius:12px;
+background-image:
+    repeating-linear-gradient(180deg, rgba(255,255,255,0.01) 0 1px, transparent 1px 4px);
+mix-blend-mode:overlay;
+}
+
+/* faint glow */
+.nier-upload::before{
+content:"";
+pointer-events:none;
+position:absolute;
+left:-30%;
+top:-30%;
+width:160%;
+height:160%;
+transform:rotate(-6deg);
+background: radial-gradient(ellipse at center, rgba(191,199,207,0.03) 0%, transparent 35%);
+z-index:0;
+}
+
+/* glitch bars (animated) */
+.glitch-bar{
+position:absolute;
+top:0;
+bottom:0;
+width:8%;
+background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+mix-blend-mode:screen;
+opacity:0;
+pointer-events:none;
+transform:skewX(-8deg);
+border-radius:6px;
+}
+.glitch-bar.left { left:-4%; }
+.glitch-bar.mid { left:46%; width:10%; }
+.glitch-bar.right { right:-4%; }
+
+/* small subtitle */
+.sub {
+margin-top:12px;
+color:rgba(182, 92, 147, 0.6);
+font-size:0.85rem;
+}
+
+/* hidden input */
+input[type="file"] { display:none; }
+
+/* preview */
+.preview {
+margin-top:16px;
+width:100%;
+border-radius:8px;
+overflow:hidden;
+background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+padding:8px;
+border:1px dashed rgba(255,255,255,0.03);
+}
+.preview img {
+display:block;
+max-width:100%;
+border-radius:6px;
+}
+
+/* subtle micro-UI details */
+.meta {
+margin-left:6px;
+font-size:0.78rem;
+color:rgba(187, 101, 137, 0.65);
+letter-spacing:0.02em;
+}
+
+/* responsive */
+@media (max-width:420px){
+.nier-upload { width:92%; padding:16px; }
+.icon { width:30px; height:30px; }
+}

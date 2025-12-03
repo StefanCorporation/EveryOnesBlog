@@ -1,1 +1,104 @@
-<% include('./partials/header.ejs') %>
+<%- include('../partials/headerForLogin.ejs') %>
+
+<div class="container text-center mt-3">
+    <h1 class="mulan glitchText">Profile</h1>
+</div>
+
+
+
+
+
+<div class="container text-center mt-3 mb-2">
+    <div class="row">
+        <div class="col">
+            <div class="card mx-auto bg-color shadow-lg" style="width: 18rem;">
+            <img src="/uploads/usersAvatars/rab.png" class="card-img-top avatarSize" alt="...">
+            <div class="card-body cardCorrect">
+                <form class="row g-3">
+                    <div class="upload-wrap">
+                        <div id="btn" class="nier-upload" role="button" tabindex="0" aria-label="Upload file">
+                        <div class="glitch-bar left" aria-hidden="true"></div>
+                        <div class="glitch-bar mid" aria-hidden="true"></div>
+                        <div class="glitch-bar right" aria-hidden="true"></div>
+
+                        <div class="label" style="position:relative;z-index:2;">
+                            <div class="icon" aria-hidden="true">
+                            <!-- minimal upload glyph (SVG) -->
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 5 17 10"></polyline>
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                            </svg>
+                            </div>
+
+                            <div>
+                            Upload Avatar
+                            <div class="meta">.png .jpg .webp — max 5MB</div>
+                            </div>
+                        </div>
+                        </div>
+
+                        <!-- <div class="sub">Hover to animate • Click to choose file</div> -->
+
+                        <!-- hidden file input -->
+                        <input type="file" id="fileInput" accept="image/*" />
+
+                        <div id="preview" class="preview" style="display:none;">
+                        <img id="previewImg" alt="preview" />
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <input type="text" class="form-control" id="inputFirstName" placeholder="First Name *" requred>
+                    </div>
+                    <div class="col-12">
+                        <input type="text" class="form-control" id="inputLastName" placeholder="Last Name *" requred>
+                    </div>
+                    <div class="col-12">
+                        <input type="text" class="form-control" id="inputUsername" placeholder="Username *" requred>
+                    </div>
+                    <div class="col-12">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="user@gmail.com" requred>
+                    </div>
+
+                    <div class="container text-center mt-5 mb-5">
+                    <!-- This button is From Uiverse.io by Wlidha09 --> 
+                        <button class="btn-slice" href="#">
+                            <div class="top"><span>SUBMIT</span></div>
+                            <div class="bottom"><span>SUBMIT</span></div>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        </div>
+
+        <div class="col-8 g-3">
+            <h1>Helou</h1>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="/JS/awesomeUpload.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include('../partials/footerForLogin.ejs') %>

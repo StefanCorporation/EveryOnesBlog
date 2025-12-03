@@ -9,7 +9,14 @@ body {
 }
 
 
+.avatarSize {
+  width: 286px;
+  height: 429px;
+}
 
+.cardCorrect {
+  margin-bottom: -20px;
+}
 
 .bg-color {
   background-color: #b0ac94 !important;
