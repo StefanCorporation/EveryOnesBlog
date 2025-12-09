@@ -1,5 +1,8 @@
 <%- include('../partials/headerForLogin.ejs') %>
 
+<link rel="stylesheet" href="/CSS/carousel.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 <div class="container text-center mt-3">
     <h1 class="mulan glitchText">Profile</h1>
 </div>
@@ -12,7 +15,7 @@
     <div class="row">
         <div class="col">
             <div class="card mx-auto bg-color shadow-lg" style="width: 18rem;">
-            <img src="/uploads/usersAvatars/rab.png" class="card-img-top avatarSize" alt="...">
+            <img src="/uploads/usersAvatars/rab.png" class="card-img-top avatarSize shadow-lg" alt="...">
             <div class="card-body cardCorrect">
                 <form class="row g-3">
                     <div class="upload-wrap">
@@ -74,13 +77,46 @@
         </div>
 
         <div class="col-8 g-3">
-            <h1>Helou</h1>
+            <div class="card mb-3 bg-color shadow-lg">
+            <div class="card bg-color shadow-lg">
+            <div class="card-body bg-color shadow-lg">
+                <h5 class="card-title">My title</h5>
+
+            </div>
+            <img src="/uploads/usersBackgroundImages/banner.png" class="card-img-bottom" alt="...">
+            </div>
+        </div>
+
+        <div class="col-sm-12 albumCorrect animate__animated animate__slideInUp">
+            <h1 class="mulan glitchText" data-target="Images">Images</h1>
+
+            <div class="userCardsCorrect mt-5">
+ 
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                    <div class="swiper-slide">Slide 1</div>
+                    <div class="swiper-slide">Slide 2</div>
+                    <div class="swiper-slide">Slide 3</div>
+                    <div class="swiper-slide">Slide 4</div>
+                    <div class="swiper-slide">Slide 5</div>
+                    <div class="swiper-slide">Slide 6</div>
+                    <div class="swiper-slide">Slide 7</div>
+                    <div class="swiper-slide">Slide 8</div>
+                    <div class="swiper-slide">Slide 9</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="/JS/awesomeUpload.js"></script>
+<script src="/JS/profile.js"></script>
+<script src="/JS/carousel.js"></script>
 
 
 

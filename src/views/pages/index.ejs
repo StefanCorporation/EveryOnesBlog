@@ -22,6 +22,70 @@
     </div>
 </div>
 
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+                    <div class="container text-center mt-5 mb-5" data-bs-toggle="modal" data-bs-target="#createPostModal">
+                    <!-- This button is From Uiverse.io by Wlidha09 --> 
+                    <button class="btn-slice" href="#">
+                    <div class="top"><span>SAY SOMETHING 📯</span></div>
+                    <div class="bottom"><span>SAY SOMETHING 📯</span></div>
+                    </button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="createPostModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+
+      <!-- Header -->
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold">Create Post</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+
+        <!-- User info -->
+        <div class="d-flex align-items-center mb-3">
+          <img src="https://via.placeholder.com/45" class="rounded-circle me-2" alt="profile">
+          <div>
+            <div class="fw-bold">Your Name</div>
+            <small class="text-muted">Public</small>
+          </div>
+        </div>
+
+        <!-- Textarea -->
+        <textarea class="form-control border-0" id="postText" rows="4" placeholder="What's on your mind?"></textarea>
+
+        <!-- Image upload -->
+        <div class="border rounded p-3 mt-3 text-center" id="imageUploadBox" style="cursor:pointer;">
+          <i class="bi bi-image fs-2 text-primary"></i>
+          <div>Add Photo/Video</div>
+          <input type="file" id="postImage" accept="image/*" hidden>
+        </div>
+
+        <!-- Preview -->
+        <div class="mt-3 d-none" id="previewContainer">
+          <img id="previewImg" class="img-fluid rounded" />
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer d-flex justify-content-between">
+        <button class="btn btn-light">Add to post</button>
+        <button class="btn btn-primary">Post</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!--Content-->
 <div class="container mt-5">
   <div class="card w-75 mb-3">
@@ -95,5 +159,6 @@
 
 <script src="/JS/glitch.js"></script>  
 <script src="/JS/nierBg.js"></script>
+<script src="/JS/popup.js"></script>
 
 <%- include('../partials/footer.ejs') %>

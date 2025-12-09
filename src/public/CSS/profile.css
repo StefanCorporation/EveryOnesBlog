@@ -1,0 +1,82 @@
+.js-profile-loading .card.mx-auto,
+.js-profile-loading .col-8 {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Как только JS готов — включаем анимацию */
+.js-profile-ready .card.mx-auto,
+.js-profile-ready .col-8 {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+
+.universal-banner-wrapper {
+  position: relative;
+  height: 320px;
+  overflow: hidden;
+  border-radius: 8px 8px 8px 8px;
+  margin: -1rem -1.5rem 4rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+.universal-banner,
+.universal-banner-blur {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-size: cover;
+  background-position: center 25%;
+  background-repeat: no-repeat;
+}
+
+.universal-banner-blur {
+  filter: blur(36px);
+  transform: scale(1.18);
+  opacity: 0.82;
+}
+
+/* Аватарка красиво выезжает сверху */
+.universal-avatar-floating {
+  position: relative;
+  z-index: 10;
+  margin: -350px auto 30px !important;
+  width: fit-content;
+}
+
+.universal-avatar-floating .card-img-top:hover {
+  transform: scale(1.05);
+}
+
+/* Поднимаем карточку с формой */
+.universal-avatar-floating + .card-body {
+  margin-top: -30px;
+  border-radius: 24px;
+  padding-top: 40px;
+}
+
+/* Скрываем старый баннер полностью */
+.col-8 .card.mb-3,
+.card-img-bottom {
+  display: none !important;
+}
+
+
+/* Адаптив: чуть меньше на мобильных */
+@media (max-width: 768px) {
+  .universal-banner-wrapper {
+    height: 280px;
+    margin: -1.5rem -0.7rem 3rem;
+  }
+   
+  .universal-avatar-floating {
+    margin: -200px auto 20px !important;
+  }
+
+  .albumCorrect {
+    margin-left: 130px;
+  }
+}
+

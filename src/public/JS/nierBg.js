@@ -6,7 +6,7 @@ const vantaEffect = VANTA.BIRDS({
   minHeight: 1000.00,
   minWidth: 200.00,
   scale: 1.00,
-  scaleMobile: 1.00,
+  scaleMobile: 10.00,
   backgroundColor: 0xa79e8d,
   color1: 0xa23838,
   color2: 0xffffff,
