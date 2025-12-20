@@ -2,12 +2,17 @@ import bodyParser from 'body-parser';
 import express from 'express';
 import morgan from 'morgan';
 import path from 'path';
+import session from 'express-session';
+
 import { fileURLToPath } from 'url';
+
+import connectDB from "./db/connect.js";
 
 import homePageRoutes from './routes/homePageRoutes.js';
 import registrationPageRoutes from './routes/registrationPageRoutes.js';
 import loginPageRoutes from './routes/loginPageRoutes.js';
 import profilePageRoutes from './routes/profilePageRoutes.js';
+
 
 
 
@@ -18,12 +23,22 @@ const app = express();
 const port = 3000;
 
 
+//DB connect
+connectDB();
+
 app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({extended: true}));
-
+app.use(express.json());
 app.use(express.static('public'));
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
+
+
+app.use(session({
+  secret: 'super-secret-key',
+  resave: false,
+  saveUninitialized: false,
+}));
 
 
 //Routes

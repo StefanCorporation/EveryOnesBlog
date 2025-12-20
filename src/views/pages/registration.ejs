@@ -1,56 +1,116 @@
 <%- include('../partials/headerForLogin.ejs') %>
 
-
 <div class="container text-center mt-5">
     <h1 class="mulan glitchText">Registration</h1>
 </div>
 
-
-
 <div class="container mt-3 centered">
-    <div class="row">
-        <form class="row g-3">
-          <div class="col-md-6">
-            <label for="inputFirstName" class="form-label mulan glitchText formFontSize">First Name *</label>
-            <input type="text" class="form-control" id="inputFirstName"  placeholder="Enter first name" required>
-          </div>
-          <div class="col-md-6">
-            <label for="inputLastName" class="form-label mulan glitchText formFontSize">Last Name *</label>
-            <input type="text" class="form-control"  placeholder="Enter last name" id="inputLastName" required>
-          </div>
-          <div class="col-12 mt-5">
-            <label for="inputUsername" class="form-label mulan glitchText formFontSize">Username *</label>
-            <input type="text" class="form-control" id="inputUsername" placeholder="Enter username" requred>
-          </div>
-          <div class="col-12 mt-5">
-            <label for="inputEmail" class="form-label mulan glitchText formFontSize">Email *</label>
-            <input type="email" class="form-control" id="inputEmail" placeholder="user@gmail.com" requred>
-          </div>
-          <div class="col-12 mt-5">
-            <label for="inputPassword1" class="form-label mulan glitchText formFontSize">Create the password... *</label>
-            <input type="password" class="form-control" id="inputPassword1" placeholder="Create password" required>
-          </div>
-          <div class="col-12 mt-5">
-            <label for="inputPassword2" class="form-label mulan glitchText formFontSize">Submit password... *</label>
-            <input type="password" class="form-control" id="inputPassword2" placeholder="Submit password" required>
-          </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-6">
+
+            <!-- Display General Errors (e.g., username/email taken, server error) -->
+            <% if (errors && errors.general) { %>
+                <div class="alert alert-danger text-center mt-4">
+                    <%= errors.general %>
+                </div>
+            <% } %>
+
+            <!-- Display Password Mismatch Error -->
+            <% if (errors && errors.confirmPassword) { %>
+                <div class="alert alert-danger text-center mt-4">
+                    <%= errors.confirmPassword %>
+                </div>
+            <% } %>
+
+            <form class="row g-3" action="/EveryOnesBlog/registration" method="POST">
 
 
+                <div class="col-md-6">
+                    <label for="inputFirstName" class="form-label mulan glitchText formFontSize">First Name *</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="inputFirstName" 
+                        name="firstname" 
+                        placeholder="Enter first name" 
+                        value="<%= old?.firstname || '' %>" 
+                        required>
+                </div>
 
+                <div class="col-md-6">
+                    <label for="inputLastName" class="form-label mulan glitchText formFontSize">Last Name *</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="inputLastName" 
+                        name="lastname" 
+                        placeholder="Enter last name" 
+                        value="<%= old?.lastname || '' %>" 
+                        required>
+                </div>
 
-        <div class="container text-center mt-5 mb-5">
-        <!-- This button is From Uiverse.io by Wlidha09 --> 
-        <button class="btn-slice" href="#">
-          <div class="top"><span>SUBMIT</span></div>
-          <div class="bottom"><span>SUBMIT</span></div>
-        </button>
+                <div class="col-12 mt-5">
+                    <label for="inputUsername" class="form-label mulan glitchText formFontSize">Username *</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="inputUsername" 
+                        name="username" 
+                        placeholder="Enter username" 
+                        value="<%= old?.username || '' %>" 
+                        required>
+                </div>
+
+                <div class="col-12 mt-5">
+                    <label for="inputEmail" class="form-label mulan glitchText formFontSize">Email *</label>
+                    <input 
+                        type="email" 
+                        class="form-control" 
+                        id="inputEmail" 
+                        name="email" 
+                        placeholder="user@gmail.com" 
+                        value="<%= old?.email || '' %>" 
+                        required>
+                </div>
+
+                <div class="col-12 mt-5">
+                    <label for="inputPassword1" class="form-label mulan glitchText formFontSize">Create the password... *</label>
+                    <input 
+                        type="password" 
+                        class="form-control" 
+                        id="inputPassword1" 
+                        name="password" 
+                        placeholder="Create password" 
+                        required>
+                </div>
+
+                <div class="col-12 mt-5">
+                    <label for="inputPassword2" class="form-label mulan glitchText formFontSize">Submit password... *</label>
+                    <input 
+                        type="password" 
+                        class="form-control" 
+                        id="inputPassword2" 
+                        name="confirmPassword" 
+                        placeholder="Submit password" 
+                        required>
+                </div>
+
+                <div class="container text-center mt-5 mb-5">
+                    <button type="submit" class="btn-slice">
+                        <div class="top"><span>SUBMIT</span></div>
+                        <div class="bottom"><span>SUBMIT</span></div>
+                    </button>
+                </div>
+            </form>
+
+            <div class="text-center mt-4">
+                <p class="mulan ">Already have an account? 
+                    <a href="/EveryOnesBlog/login" class="text-decoration-underline">Login here</a>
+                </p>
+            </div>
 
         </div>
-
-        </form>
     </div>
 </div>
 
-
-
-<%- include('../partials/footerForLogin.ejs') %>
+<%- include('../partials/footerForLogin.ejs') %> 

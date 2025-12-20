@@ -25,34 +25,35 @@
 <div class="container text-center">
   <div class="row">
     <div class="col">
-                    <div class="container text-center mt-5 mb-5" data-bs-toggle="modal" data-bs-target="#createPostModal">
-                    <!-- This button is From Uiverse.io by Wlidha09 --> 
-                    <button class="btn-slice" href="#">
-                    <div class="top"><span>SAY SOMETHING 📯</span></div>
-                    <div class="bottom"><span>SAY SOMETHING 📯</span></div>
-                    </button>
+        <div class="container text-center mt-5 mb-5" data-bs-toggle="modal" data-bs-target="#createPostModal">
+        <!-- This button is From Uiverse.io by Wlidha09 --> 
+        <button class="btn-slice" href="#">
+        <div class="top"><span>SAY SOMETHING 📯</span></div>
+        <div class="bottom"><span>SAY SOMETHING 📯</span></div>
+        </button>
     </div>
   </div>
 </div>
 
 
 <!-- Modal -->
-<div class="modal fade" id="createPostModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
+<div class="modal fade" id="createPostModal" tabindex="-1" aria-labelledby="createPostModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <!-- Убрали modal-lg -->
     <div class="modal-content">
 
       <!-- Header -->
-      <div class="modal-header">
-        <h5 class="modal-title fw-bold">Create Post</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      <div class="modal-header header-color">
+        <h5 class="modal-title fw-bold mulan" id="createPostModalLabel" style="color: blanchedalmond;">Create Post</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
       <!-- Body -->
-      <div class="modal-body">
+      <div class="modal-body bg-color">
 
         <!-- User info -->
         <div class="d-flex align-items-center mb-3">
-          <img src="https://via.placeholder.com/45" class="rounded-circle me-2" alt="profile">
+          <img src="/images/favico.png" class="rounded-circle me-2 flex-shrink-0" alt="profile" width="45" height="45">
           <div>
             <div class="fw-bold">Your Name</div>
             <small class="text-muted">Public</small>
@@ -60,27 +61,52 @@
         </div>
 
         <!-- Textarea -->
-        <textarea class="form-control border-0" id="postText" rows="4" placeholder="What's on your mind?"></textarea>
+        <textarea class="form-control border-1 mb-3" id="postText" rows="5" placeholder="What's on your mind?" style="resize: none;"></textarea>
 
         <!-- Image upload -->
-        <div class="border rounded p-3 mt-3 text-center" id="imageUploadBox" style="cursor:pointer;">
-          <i class="bi bi-image fs-2 text-primary"></i>
-          <div>Add Photo/Video</div>
-          <input type="file" id="postImage" accept="image/*" hidden>
-        </div>
+        <div class="upload-wrap mb-3 mx-auto">
+          <div id="imageUploadBox" class="nier-upload d-inline-block" role="button" tabindex="0" aria-label="Upload file">
+            <div class="glitch-bar left" aria-hidden="true"></div>
+            <div class="glitch-bar mid" aria-hidden="true"></div>
+            <div class="glitch-bar right" aria-hidden="true"></div>
 
-        <!-- Preview -->
-        <div class="mt-3 d-none" id="previewContainer">
-          <img id="previewImg" class="img-fluid rounded" />
+            <div class="label" style="position:relative; z-index:2;">
+              <div class="icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 5 17 10"></polyline>
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                </svg>
+              </div>
+              <div>
+                Upload Image/Video
+                <div class="meta">.png .jpg .webp — max 5MB</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sub d-block mt-2">• Click to choose file</div>
+
+          <!-- Hidden file input -->
+          <input type="file" id="postImage" accept="image/*,video/*" class="d-none" />
+
+          <!-- Preview -->
+          <div class="mt-3 d-none" id="previewContainer">
+            <img id="previewImg" class="img-fluid rounded shadow" alt="Preview" style="max-height: 400px; width: 100%; object-fit: cover;">
+            <button type="button" class="btn-close position-absolute top-0 end-0 m-2 bg-white rounded-circle" onclick="removePreview()"></button>
+          </div>
         </div>
 
       </div>
 
       <!-- Footer -->
-      <div class="modal-footer d-flex justify-content-between">
-        <button class="btn btn-light">Add to post</button>
-        <button class="btn btn-primary">Post</button>
+      <div class="modal-footer bg-color justify-content-center">
+        <button type="button" class="btn-slice px-5 py-3" id="postButton">
+          <div class="top"><span>Post 📬</span></div>
+          <div class="bottom"><span>Post 📬</span></div>
+        </button>
       </div>
+
     </div>
   </div>
 </div>
@@ -134,11 +160,6 @@
 </div>
 
 
-</div>
-
-
-
-</div>
 
 
 
@@ -160,5 +181,6 @@
 <script src="/JS/glitch.js"></script>  
 <script src="/JS/nierBg.js"></script>
 <script src="/JS/popup.js"></script>
+<script src="/JS/awesomeUpload.js"></script>
 
 <%- include('../partials/footer.ejs') %>

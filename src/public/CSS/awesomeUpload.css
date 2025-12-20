@@ -15,7 +15,7 @@ background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01
 box-shadow: 0 6px 18px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
 border:1px solid rgba(255,255,255,0.04);
 cursor:pointer;
-overflow:visible;
+overflow:hidden !important;
 transform-origin:center;
 }
 
@@ -85,6 +85,7 @@ border-radius:6px;
 .glitch-bar.mid { left:46%; width:10%; }
 .glitch-bar.right { right:-4%; }
 
+
 /* small subtitle */
 .sub {
 margin-top:12px;
@@ -118,6 +119,7 @@ font-size:0.78rem;
 color:rgba(187, 101, 137, 0.65);
 letter-spacing:0.02em;
 }
+
 
 /* responsive */
 @media (max-width:420px){

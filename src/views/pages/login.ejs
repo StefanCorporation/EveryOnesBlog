@@ -8,22 +8,22 @@
 
 
 
-    <div class="container">
-        <div class="container mt-3 centered">
-            <div class="row">
+
+<div class="container mt-3 centered">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-6">
                 <form class="row g-3">
                     <div class="col-12 mt-5">
                         <label for="inputUsername" class="form-label mulan glitchText formFontSize">Username *</label>
-                        <input type="text" class="form-control" id="inputUsername" placeholder="Enter username" requred>
+                        <input type="text" class="form-control" id="inputUsername" name="username" placeholder="Enter username" requred>
                     </div>
                     <div class="col-12 mt-5">
                         <label for="inputEmail" class="form-label mulan glitchText formFontSize">Email *</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="user@gmail.com" requred>
+                        <input type="email" class="form-control" id="inputEmail" name="email" placeholder="user@gmail.com" requred>
                     </div>
                     <div class="col-12 mt-5">
-                        <label for="inputPassword1" class="form-label mulan glitchText formFontSize">Password...
-                            *</label>
-                        <input type="password" class="form-control" id="inputPassword1" placeholder="Enter password"
+                        <label for="inputPassword1" class="form-label mulan glitchText formFontSize">Password...*</label>
+                        <input type="password" class="form-control" id="inputPassword1" name="password" placeholder="Enter password"
                             required>
                     </div>
 
@@ -34,17 +34,17 @@
                     <button class="btn-slice" href="#">
                     <div class="top"><span>SUBMIT</span></div>
                     <div class="bottom"><span>SUBMIT</span></div>
-                    </button>
-
-        </div>
-
+                    </button>       
                 </form>
+
+            <div class="text-center mt-5">
+                <p class="mulan ">Doesen't have an account? 
+                    <a href="/EveryOnesBlog/registration" class="text-decoration-underline">Sign up here</a>
+                </p>
             </div>
-        </div>
-
-        </form>
+        </div>  
     </div>
-    </div>
+ </div>
 
 
 
@@ -52,4 +52,4 @@
     </div>
 
 
-    <%- include('../partials/footerForLogin.ejs') %>
+<%- include('../partials/footerForLogin.ejs') %>

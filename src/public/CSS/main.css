@@ -9,6 +9,14 @@ body {
 }
 
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: #000 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 .avatarSize {
   width: 286px;
   height: 429px;
@@ -41,9 +49,8 @@ body {
 }
 
 
-
 @media (max-width: 576px) { 
-  .centered {
+  .entered {
     transform: translateX(1.90%);
   }
 }
