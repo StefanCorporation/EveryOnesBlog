@@ -43,7 +43,9 @@ export const registration = async (req, res) => {
          });
         await user.save();
 
-        // Success → redirect to login or dashboard
+        // ✅ AUTO-LOGIN HERE
+        req.session.userId = user._id;  // Set session → user is now logged in
+
         res.redirect('/EveryOnesBlog'); // or '/dashboard' if you auto-login
 
     } catch (err) {
@@ -101,7 +103,7 @@ export const login = async (req, res) => {
     // ✅ LOGIN SUCCESS
     req.session.userId = user._id;
 
-    res.redirect('/dashboard');
+    res.redirect('/EveryOnesBlog');
 
   } catch (err) {
     console.error(err);

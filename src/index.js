@@ -13,7 +13,7 @@ import registrationPageRoutes from './routes/registrationPageRoutes.js';
 import loginPageRoutes from './routes/loginPageRoutes.js';
 import profilePageRoutes from './routes/profilePageRoutes.js';
 
-
+import User from './models/User.js';
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -39,6 +39,28 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
 }));
+
+
+
+
+// Middleware to load current logged-in user into ALL templates
+app.use(async (req, res, next) => {
+    res.locals.user = null;           // default: no user
+    res.locals.isAuthenticated = false;
+
+    if (req.session.userId) {
+        try {
+            const user = await User.findById(req.session.userId);
+            if (user) {
+                res.locals.user = user;              // ← now available in ALL EJS files
+                res.locals.isAuthenticated = true;
+            }
+        } catch (err) {
+            console.error('Error loading user:', err);
+        }
+    }
+    next();
+});
 
 
 //Routes
