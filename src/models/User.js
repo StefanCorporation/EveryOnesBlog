@@ -57,7 +57,11 @@ const userSchema = new mongoose.Schema(
                 },
                 message: "Password must be at least 8 characters long and contain: uppercase, lowercase, number, and symbol",
             }
-        }    
+        },
+        profilePicture: {
+            type: String,
+            default: '/uploads/usersAvatars/default-avatar.png'
+        }   
 
     }, { timestamps: true }
 );
