@@ -18,7 +18,7 @@ export const getProfilePage = async (req, res) => {
     try {
         const user = await User.findById(req.session.userId);
         if (!user) {
-            delete req.session.UserId;
+            delete req.session.userId;
             return res.redirect('EevryOnesBlog/login');
         }
 
@@ -37,8 +37,8 @@ export const getProfilePage = async (req, res) => {
 
 //post
 export const updateProfile = async (req, res) => {
-    if (!req.session.UserId) {
-        return res.redirect('EveryOnesBlog/login');
+    if (!req.session.userId) {
+        return res.redirect('/EveryOnesBlog/login');
     }
 
 
@@ -46,21 +46,22 @@ export const updateProfile = async (req, res) => {
     let profilePicture = null;
 
     try {
-        const user = await User.findById(req.session.UserId);
+        const user = await User.findById(req.session.userId);
         if(!user) {
-            delete req.session.UserId;
-            return res.render('EveryOnesBlog/login');
+            delete req.session.userId;
+            return res.render('/EveryOnesBlog/login');
         }
     
 
     if (req.file) {
-        profilePicture = `/uploads/userAvatars/${req.file.filename}`;
+        profilePicture = `/uploads/usersAvatars/${req.file.filename}`;
 
         //option delete old avatar id exists
-        if (user.profilePicture && user.profilePicture.include('/uploads/userAvatars/')) {
-            const oldPath = path.join(__dirname, '..', '..', 'public', user.profilePicture) 
-        } if (fs.existsSync(oldPath)) {
-            fs.unlinkSync(oldPath);
+        if (user.profilePicture && user.profilePicture.includes('/uploads/usersAvatars/')) {
+            const oldPath = path.join(__dirname, '..', '..', 'public', user.profilePicture);
+            if (fs.existsSync(oldPath)) {
+                fs.unlinkSync(oldPath);
+            }
         }
 
     } 
@@ -70,7 +71,7 @@ export const updateProfile = async (req, res) => {
     user.lastname = lastname || user.lastname;
     user.username = username || user.username;
     if (profilePicture) {
-        user.profilePicture = ProfilePicture;
+        user.profilePicture = profilePicture;
     }
 
     await user.save();

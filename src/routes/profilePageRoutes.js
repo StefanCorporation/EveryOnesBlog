@@ -1,41 +1,37 @@
 import express from 'express';
 import multer from 'multer';
 import path from 'path';
-
-// import { getProfilePage } from '../controllers/profilePage.js';
 import { getProfilePage, updateProfile } from '../controllers/profilePage.js';
-
 
 const router = express.Router();
 
+// Multer configuration
 const storage = multer.diskStorage({
-    destination: (req, res, cb) => {
-        cb(null, '/uploads/usersAvatars/');
+    destination: (req, file, cb) => {
+        cb(null, 'public/uploads/usersAvatars');  // ← correct path
     },
-    filename: (req, res, cb) => {
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math(random() * 1E9));
-        cb(null, 'avatar-', + req.session.UserId + '-' + uniqueSuffix + path.extname(file.originalname));
+    filename: (req, file, cb) => {
+        cb(null, 'avatar-' + req.session.userId + '-' + path.extname(file.originalname));
     }
 });
 
-
 const upload = multer({
-    storage,
-    limits: { fileSize: 5 * 1024 * 1024 },
-    fileFilter: (req, res, cb) => {
+    storage: storage,
+    limits: { fileSize: 5 * 1024 * 1024 }, // 5MB max
+    fileFilter: (req, file, cb) => {  // ← correct parameters: req, file, cb
         const filetypes = /jpeg|jpg|png|webp/;
         const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
         const mimetype = filetypes.test(file.mimetype);
+
         if (extname && mimetype) {
             return cb(null, true);
         }
-        cb(new Error('Only images are allowed!'));
-  }
-
+        cb(new Error('Only image files (jpg, jpeg, png, webp) are allowed!'));
+    }
 });
 
-
-router.get('/Profile', getProfilePage);
+// Routes
+router.get('/profile', getProfilePage);
 router.post('/profile', upload.single('avatar'), updateProfile);
 
 export default router;

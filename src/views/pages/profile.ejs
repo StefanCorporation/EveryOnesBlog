@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="/CSS/carousel.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-<div class="container text-center mt-3">
+<div class="container text-center mt-5">
     <h1 class="mulan glitchText">Profile</h1>
 </div>
 
@@ -15,9 +15,28 @@
     <div class="row">
         <div class="col">
             <div class="card mx-auto bg-color shadow-lg" style="width: 18rem;">
-            <img src="/uploads/usersAvatars/rab.png" class="card-img-top avatarSize shadow-lg" alt="...">
+
+
+           
+            <img src="<%= user.profilePicture || '/images/rab.png' %>"
+                    class="card-img-top avatarSize shadow-lg"
+                    alt="User Avatar"
+                    id="currentAvatar">
+
             <div class="card-body cardCorrect">
-                <form class="row g-3">
+
+            <!-- Success Message -->
+                    <% if (success) { %>
+                        <div class="alert alert-success"><%= success %></div>
+                    <% } %>
+                    
+            <!-- Error Message -->
+                    <% if (errors.general) { %>
+                        <div class="alert alert-danger"><%= errors.general %></div>
+                    <% } %>       
+                    
+                    
+                <form class="row g-3" action="/EveryOnesBlog/profile" method="post"  enctype="multipart/form-data">
                     <div class="upload-wrap">
                         <div id="btn" class="nier-upload" role="button" tabindex="0" aria-label="Upload file">
                         <div class="glitch-bar left" aria-hidden="true"></div>
@@ -44,28 +63,34 @@
                         <!-- <div class="sub">Hover to animate • Click to choose file</div> -->
 
                         <!-- hidden file input -->
-                        <input type="file" id="fileInput" accept="image/*" />
+                        <input type="file" id="fileInput" accept="image/*"  name="avatar"/>
 
                         <div id="preview" class="preview" style="display:none;">
                         <img id="previewImg" alt="preview" />
                         </div>
                     </div>
+
+
                     <div class="col-12">
-                        <input type="text" class="form-control" id="inputFirstName" placeholder="First Name *" requred>
+                        <input type="text" class="form-control" name="firstname" value="<%= user.firstname %>"
+                            id="inputFirstName" placeholder="First Name *" requred>
                     </div>
                     <div class="col-12">
-                        <input type="text" class="form-control" id="inputLastName" placeholder="Last Name *" requred>
+                        <input type="text" class="form-control" name="lastname" value="<%= user.lastname %>"
+                            id="inputLastName" placeholder="Last Name *" requred>
                     </div>
                     <div class="col-12">
-                        <input type="text" class="form-control" id="inputUsername" placeholder="Username *" requred>
+                        <input type="text" class="form-control" name="username" value="<%= user.username %>"
+                        id="inputUsername" placeholder="Username *" requred>
                     </div>
                     <div class="col-12">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="user@gmail.com" requred>
+                        <input type="email" class="form-control" name="email" value="<%= user.email %>"
+                        id="inputEmail" placeholder="user@gmail.com" requred>
                     </div>
 
                     <div class="container text-center mt-5 mb-5">
                     <!-- This button is From Uiverse.io by Wlidha09 --> 
-                        <button class="btn-slice" href="#">
+                    <button class="btn-slice" type="submit">
                             <div class="top"><span>SUBMIT</span></div>
                             <div class="bottom"><span>SUBMIT</span></div>
                         </button>
