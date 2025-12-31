@@ -30,7 +30,7 @@ app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static('public'));
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+
 
 
 
