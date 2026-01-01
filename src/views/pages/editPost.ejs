@@ -1,0 +1,49 @@
+<%- include('../partials/headerForLogin.ejs') %>
+
+<div class="container mt-5">
+    <h1 class="mulan glitchText text-center mb-4">Edit Post</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card bg-color shadow-lg">
+                <div class="card-body">
+                    <form action="/EveryOnesBlog/edit-post/<%= post._id %>" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label class="form-label mulan">Title</label>
+                            <input type="text" name="title" class="form-control" value="<%= post.title %>" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label mulan">Content</label>
+                            <textarea name="content" class="form-control" rows="3" required><%= post.content %></textarea>
+                        </div>
+
+                        <% if (post.image) { %>
+                            <div class="mb-3">
+                                <label class="form-label mulan">Current Image</label>
+                                <img src="<%= post.image %>" class="img-fluid rounded" style="max-height: 400px;">
+                                <p class="text-muted mt-2">Upload new image to replace</p>
+                            </div>
+                        <% } %>
+
+                        <div class="mb-3">
+                            <label class="form-label mulan">New Image (optional)</label>
+                            <input type="file" name="image" class="form-control" accept="image/*">
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn-slice">
+                                <div class="top"><span>Update Post</span></div>
+                                <div class="bottom"><span>Update Post</span></div>
+                            </button>
+                            <a href="/EveryOnesBlog/profile" class="btn btn-secondary ms-3">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            
+<%- include('../partials/footerForLogin.ejs') %>

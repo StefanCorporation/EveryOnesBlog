@@ -1,7 +1,16 @@
 import express from 'express';
 import multer from 'multer';
 import path from 'path';
-import { getProfilePage, updateProfile } from '../controllers/profilePage.js';
+
+import { 
+    getProfilePage, 
+    updateProfile, 
+    getEditPost, 
+    updatePost, 
+    deletePost 
+} from '../controllers/profilePage.js';
+
+
 
 const router = express.Router();
 
@@ -33,5 +42,10 @@ const upload = multer({
 // Routes
 router.get('/profile', getProfilePage);
 router.post('/profile', upload.single('avatar'), updateProfile);
+
+router.get('/edit-post/:id', getEditPost);
+router.post('/edit-post/:id', upload.single('image'), updatePost);
+router.post('/delete-post/:id', deletePost);
+
 
 export default router;

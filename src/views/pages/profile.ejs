@@ -129,7 +129,67 @@
             </ul>
             
             <h1 class="mulan glitchText" data-target="My Posts">My Posts</h1>
+
         </div>
+
+
+<div class="container mt-5">
+    <h1 class="mulan glitchText text-center mb-5">My Posts</h1>
+
+    <% const postList = posts || []; %>
+    <% if (postList.length > 0) { %>
+        <% postList.forEach(post => { %>
+            <div class="card mb-4 shadow-lg border-0 bg-color">
+                <!-- Same card as homepage -->
+                <div class="card-header header-color d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <img src="<%= user.profilePicture || '/uploads/usersAvatars/default-avatar.png' %>"
+                             class="rounded-circle me-3"
+                             width="50" height="50">
+                        <div>
+                            <div class="fw-bold mulan" style="color: blanchedalmond;">
+                                Me (@<%= user.username %>)
+                            </div>
+                            <small class="text-muted">
+                                <%= new Date(post.createdAt).toLocaleDateString() %>
+                            </small>
+                        </div>
+                    </div>
+
+                    <!-- Edit & Delete Buttons (ONLY for own posts) -->
+                    <div>
+                        <a href="/EveryOnesBlog/edit-post/<%= post._id %>" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="/EveryOnesBlog/delete-post/<%= post._id %>" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-sm btn-danger" 
+                                    onclick="return confirm('Delete this post?')">Delete</button>
+                        </form>
+                    </div>
+                </div>
+
+                <% if (post.image) { %>
+                    <img src="<%= post.image %>" class="card-img-top" style="max-height: 500px; object-fit: cover;">
+                <% } %>
+
+                <div class="card-body">
+                    <h5 class="card-title mulan glitchText"><%= post.title %></h5>
+                    <p class="card-text nier-font"><%= post.content %></p>
+                </div>
+            </div>
+        <% }) %>
+    <% } else { %>
+        <div class="text-center mt-5">
+            <h3 class="mulan glitchText text-muted">You haven't posted anything yet!</h3>
+            <a href="/EveryOnesBlog" class="btn-slice mt-3">
+                <div class="top"><span>Create Your First Post 📯</span></div>
+                <div class="bottom"><span>Create Your First Post 📯</span></div>
+            </a>
+        </div>
+    <% } %>
+</div>
+
+
+
+
     </div>
 </div>
 
